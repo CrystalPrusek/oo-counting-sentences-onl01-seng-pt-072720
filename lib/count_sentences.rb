@@ -1,25 +1,31 @@
 class String
 
   def sentence?
-    self.end_with?(".")
+    if self.end_with?(".")
+      return true
+    else
+      return false
+    end
   end
 
   def question?
-    self.end_with?("?")
-  end
-  
-  def exclamation?
-    self.end_with?("!")
-  end
-  
-  def count_sentences
-    self.split(/[.!?]/).reject {|x| x.empty?}.size
-  end
-  
-  def count_sentences_words
-    self.split(/[.!?]/).map{|x| !(x.match(/\w+/).nil?)}.reject{|x| x == false}.size
+    if self.end_with?("?")
+      return true
+    else
+      return false
     end
+  end
 
+  def exclamation?
+    if self.end_with?("!")
+      return true
+    else
+      return false
+    end
+  end
+
+  def count_sentences
+    new_array = self.split(/[.?!]/).reject {|string| string.empty?}
+    return new_array.length
+  end
 end
-
-"Well, I don't know, is this a sentence?? ??? What about this?".count_sentences_words
